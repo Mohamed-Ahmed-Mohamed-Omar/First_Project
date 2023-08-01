@@ -1,0 +1,78 @@
+﻿@model First_Project.Models.StudentVM
+
+@{
+    ViewBag.Title = "Create Student";
+}
+
+<h2>Create Student</h2>
+<br />
+
+<form asp-controller="Student" asp-action="Create" enctype="multipart/form-data" class="form-group">
+
+    <label asp-for="Name">Student Name</label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <span class="text-danger" asp-validation-for="Name"></span>
+    <br />
+
+    <label asp-for="Email">Student E_mail</label>
+    <input type="text" asp-for="Email" class="form-control" />
+    <span class="text-danger" asp-validation-for="Email"></span>
+    <br />
+
+    <label asp-for="Phone">Student Phone</label>
+    <input type="text" asp-for="Phone" class="form-control" />
+    <span class="text-danger" asp-validation-for="Phone"></span>
+    <br />
+
+    <label asp-for="Age">Student Age</label>
+    <input type="text" asp-for="Age" class="form-control" />
+    <br />
+
+    <label asp-for="Address">Student Address</label>
+    <input type="text" asp-for="Address" class="form-control" />
+    <span class="text-danger" asp-validation-for="Address"></span>
+    <br />
+
+    <label asp-for="GPA">GPA</label>
+    <input type="text" asp-for="GPA" class="form-control" />
+    <span class="text-danger" asp-validation-for="GPA"></span>
+    <br />
+
+    <label asp-for="Start_Education">Student Start Education</label>
+    <input type="date" asp-for="Start_Education" class="form-control" />
+    <span class="text-danger" asp-validation-for="Start_Education"></span>
+    <br />
+
+    <label asp-for="End_Education">Student End Education</label>
+    <input type="date" asp-for="End_Education" class="form-control" />
+    <span class="text-danger" asp-validation-for="End_Education"></span>
+    <br />
+
+    <label asp-for="DepartmentId">Department</label>
+    <select asp-for="DepartmentId" asp-items="@(SelectList)ViewBag.DepartmentList">
+        <option>Choose Department</option>
+    </select>
+    <br />
+
+    <label asp-for="PhotoUrl">Upload Photo</label>
+    <input type="file" asp-for="PhotoUrl" class="form-control" />
+    <br />
+
+    <label asp-for="CvUrl">Upload Cv</label>
+    <input type="file" asp-for="CvUrl" class="form-control" />
+    <br />
+
+    <br />
+    <center>
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-controller="Student" asp-action="Index" class="btn btn-info">Back To List</a>
+    </center>
+</form>
+
+
+<script src="~/jquery/jquery.min.js"></script>
+<script src="~/jquery/jquery.js"></script>
+<script src="~/jquery-validate/jquery.validate.min.js"></script>
+<script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+

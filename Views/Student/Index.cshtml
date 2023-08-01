@@ -1,0 +1,101 @@
+﻿@model IQueryable<First_Project.Models.StudentVM>
+
+@{
+    ViewBag.Title = "Student";
+}
+
+<h2>Welcomt To Student</h2>
+<br />
+
+
+<a asp-controller="Student" asp-action="Create" class="btn btn-primary">Add Student</a>
+<br />
+
+
+<div class="container-fluid">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>Welcome To Employee</h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);">Action</a></li>
+                                <li><a href="javascript:void(0);">Another action</a></li>
+                                <li><a href="javascript:void(0);">Something else here</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Phone</th>
+                                <th class="text-center">Age</th>
+                                <th class="text-center">Address</th>
+                                <th class="text-center">GPA</th>
+                                <th class="text-center">DepartmentName</th>
+                                <th class="text-center">Photo</th>
+                                <th class="text-center">Cv</th>
+                                <th class="text-center">Start Education</th>
+                                <th class="text-center">End Education</th>
+                                <th class="text-center">Edit</th>
+                                <th class="text-center">Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td>@item.Age</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.GPA</td>
+                                    <td>@item.DepartmentName</td>
+                                    <td><img src="~/Files/Photos/@item.PhotoName" width="30" height="30"></td>
+                                    <td><a href="~/Files/Docs/@item.CvName" >Download Cv</a></td>
+                                    <td>@item.Start_Education.Date.ToShortDateString()</td>
+                                    <td>@item.End_Education.Date.ToShortDateString()</td>
+                                    <td><a asp-controller="Student" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a></td>
+                                    <td><a asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section DataTableSelect{
+    <script>
+        $(function () {
+            $('.js-basic-example').DataTable({
+                responsive: true,
+                paging: true,
+                pageLength: 5,
+                bSort: true,
+                bFilter: true,
+                //bLengthChange: false,
+                //bInfo: false,
+                lengthMenu: [[1, 5, 10, 25, 50, -1], [1, 5, 10, 25, 50, "All"]],
+
+            });
+        });
+    </script>
+}
